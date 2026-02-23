@@ -1,0 +1,23 @@
+{
+  "id": "1a18e94a-921a-48b4-bb40-4382d14beb64",
+  "videoUrl": "/output/1a18e94a-921a-48b4-bb40-4382d14beb64/final.mp4",
+  "caption": "🍦 Transform your dessert game with Ninja Creami! 🌟 #IceCreamDreams",
+  "hashtags": [
+    "#NinjaCreami",
+    "#HomeDesserts",
+    "#IceCream",
+    "#LimitedTimeOffer",
+    "#Yum"
+  ],
+  "productTitle": "ninja creami",
+  "createdAt": "2025-12-29T06:39:43.582Z",
+  "scriptDuration": 10,
+  "voice": "nova",
+  "category": "lifestyle",
+  "overlays": {
+    "discount": "50% off",
+    "urgency": "Limited time offer!",
+    "productName": "ninja creami",
+    "price": "199.99"
+  }
+}

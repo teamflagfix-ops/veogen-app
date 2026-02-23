@@ -1,0 +1,23 @@
+{
+  "id": "1a3de6f8-4a39-4790-a4c4-d59b6ee51d3c",
+  "videoUrl": "/output/1a3de6f8-4a39-4790-a4c4-d59b6ee51d3c/final.mp4",
+  "caption": "🍦 Indulge in ice cream bliss! 10% OFF today! 🍦",
+  "hashtags": [
+    "#tiktokshop",
+    "#sale",
+    "#deal",
+    "#musthave",
+    "#limitedtime"
+  ],
+  "productTitle": "Ninja Creami",
+  "createdAt": "2026-01-05T22:57:12.800Z",
+  "scriptDuration": 10,
+  "voice": "nova",
+  "category": "kitchen",
+  "overlays": {
+    "discount": "10% OFF",
+    "urgency": "SHIPS TOMORROW!",
+    "productName": "Ninja Creami",
+    "price": ""
+  }
+}

@@ -1,0 +1,866 @@
+/* TikTokAI Landing Page - Dark Theme with Purple Accents */
+
+.container {
+    min-height: 100vh;
+    background: #000000;
+    color: #ffffff;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Glow Effects */
+.bgGlow1 {
+    position: fixed;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bgGlow2 {
+    position: fixed;
+    bottom: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Sticky Navigation */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logoIconGradient {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.logoIcon {
+    font-size: 1.5rem;
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.navLinks {
+    display: flex;
+    gap: 2rem;
+}
+
+.navLink {
+    color: #a1a1aa;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navLink:hover {
+    color: #ffffff;
+}
+
+.navCta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    color: #ffffff;
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.navCta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.heroContent {
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.stars {
+    color: #fbbf24;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+.ratingText {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.highlight {
+    background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    color: #a1a1aa;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.ctaButton {
+    display: inline-block;
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.125rem;
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.4);
+    transition: all 0.3s;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 60px rgba(124, 58, 237, 0.6);
+}
+
+.ctaSmall {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #71717a;
+    animation: fadeIn 0.8s ease-out 0.5s both;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Animated Demo Section */
+.demoSection {
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.stepsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+.step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 260px;
+    transition: all 0.3s;
+}
+
+.step.active {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+}
+
+.stepIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.step1Icon {
+    background: rgba(34, 197, 94, 0.15);
+}
+
+.step2Icon {
+    background: rgba(124, 58, 237, 0.15);
+}
+
+.step3Icon {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.processingRing {
+    position: absolute;
+    inset: -4px;
+    border: 2px solid transparent;
+    border-top-color: #7c3aed;
+    border-radius: 16px;
+    animation: spin 1s linear infinite;
+}
+
+.stepContent {
+    text-align: left;
+    flex: 1;
+}
+
+.stepLabel {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #71717a;
+    margin-bottom: 0.25rem;
+}
+
+.stepContent h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #ffffff;
+}
+
+.stepContent p {
+    font-size: 0.8rem;
+    color: #a1a1aa;
+}
+
+.processingText {
+    color: #a78bfa !important;
+    animation: textPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.stepStatus {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stepStatus.complete {
+    background: rgba(34, 197, 94, 0.2);
+    border-radius: 50%;
+}
+
+.checkmark {
+    color: #22c55e;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.waiting {
+    color: #52525b;
+    font-size: 1rem;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(124, 58, 237, 0.3);
+    border-top-color: #7c3aed;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Connector */
+.connector {
+    width: 40px;
+    height: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.connectorLine {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.connectorPulse {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #7c3aed;
+    border-radius: 50%;
+    animation: movePulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 10px #7c3aed;
+}
+
+@keyframes movePulse {
+    0% {
+        left: 0;
+        opacity: 1;
+    }
+
+    100% {
+        left: calc(100% - 8px);
+        opacity: 0.3;
+    }
+}
+
+.demoNote {
+    margin-top: 2.5rem;
+    color: #a1a1aa;
+    font-style: italic;
+}
+
+.sectionTitle {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+}
+
+.showGrid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.showCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    flex: 1;
+    text-align: left;
+}
+
+.showIcon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.showCard h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #a78bfa;
+}
+
+.showList {
+    list-style: none;
+    padding: 0;
+}
+
+.showList li {
+    padding: 0.5rem 0;
+    color: #d4d4d8;
+    font-size: 0.95rem;
+}
+
+.showList li::before {
+    content: "•";
+    color: #7c3aed;
+    margin-right: 0.5rem;
+}
+
+.showArrow {
+    font-size: 2.5rem;
+    color: #7c3aed;
+}
+
+/* Animation Classes */
+.animateLeft {
+    animation: slideInLeft 0.8s ease-out 0.3s both;
+}
+
+.animateRight {
+    animation: slideInRight 0.8s ease-out 0.5s both;
+}
+
+.animatePulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.showNote {
+    margin-top: 2rem;
+    color: #a1a1aa;
+    font-style: italic;
+}
+
+/* Social Proof Section */
+.proofSection {
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.05) 0%, transparent 100%);
+}
+
+.proofGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.proofCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.proofQuote {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.proofNote {
+    margin-top: 2rem;
+    color: #71717a;
+    font-size: 0.875rem;
+}
+
+/* Who This Is For */
+.forSection {
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.forGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.forItem {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    color: #d4d4d8;
+}
+
+/* Why It Works */
+.whySection {
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.whyGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.whyItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: #d4d4d8;
+}
+
+.whyCheck {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+/* Pricing Section */
+.pricingSection {
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.pricingIntro {
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.pricingGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pricingCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.pricingCard.popular {
+    border-color: #7c3aed;
+    background: rgba(124, 58, 237, 0.1);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.pricingCard h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #a1a1aa;
+}
+
+.priceFeatures {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.priceFeatures li {
+    padding: 0.5rem 0;
+    color: #d4d4d8;
+    font-size: 0.9rem;
+}
+
+.priceFeatures li::before {
+    content: "✓";
+    color: #22c55e;
+    margin-right: 0.5rem;
+}
+
+.pricingCta {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.pricingCta:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.pricingCtaPrimary {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    border-radius: 9999px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.pricingCtaPrimary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+.pricingNote {
+    margin-top: 2rem;
+    color: #71717a;
+    font-size: 0.875rem;
+}
+
+/* Trust Section */
+.trustSection {
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.trustGrid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    color: #a1a1aa;
+    font-size: 0.95rem;
+}
+
+.trustItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Final CTA */
+.finalCta {
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.footerBrand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footerBottom {
+    text-align: center;
+}
+
+.footerBottom p {
+    color: #52525b;
+    font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2.25rem;
+    }
+
+    .stepsContainer {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .step {
+        min-width: 100%;
+    }
+
+    .connector {
+        width: 2px;
+        height: 30px;
+        flex-direction: column;
+    }
+
+    .connectorLine {
+        width: 2px;
+        height: 100%;
+    }
+
+    .connectorPulse {
+        animation: movePulseVertical 1.5s ease-in-out infinite;
+    }
+
+    @keyframes movePulseVertical {
+        0% {
+            top: 0;
+            opacity: 1;
+        }
+
+        100% {
+            top: calc(100% - 8px);
+            opacity: 0.3;
+        }
+    }
+
+    .proofGrid,
+    .pricingGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .forGrid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trustGrid {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .navLinks {
+        display: none;
+    }
+}

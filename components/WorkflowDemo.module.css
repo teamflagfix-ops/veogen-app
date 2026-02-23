@@ -1,0 +1,236 @@
+/* WorkflowDemo Styles */
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.demoCard {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 60px rgba(124, 58, 237, 0.15);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.glowOrb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+/* Steps Indicator */
+.stepsRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    z-index: 1;
+}
+
+.stepDot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.4s ease;
+}
+
+.stepDot.active {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    border-color: #7c3aed;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+}
+
+.stepLine {
+    width: 60px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.stepLine.active {
+    background: linear-gradient(90deg, #7c3aed, #a78bfa);
+}
+
+/* Animation Area */
+.animationArea {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.stateCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.stateCard p {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+}
+
+/* Idle State */
+.idleIcon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #71717a;
+}
+
+/* Upload State */
+.uploadBox {
+    width: 120px;
+    height: 90px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed rgba(124, 58, 237, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.uploadIcon {
+    color: #7c3aed;
+}
+
+.uploadLabel {
+    font-size: 0.7rem;
+    color: #a1a1aa;
+}
+
+.uploadProgress {
+    height: 4px;
+    background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    border-radius: 2px;
+    margin-top: 0.5rem;
+}
+
+/* Processing State */
+.processingContainer {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.processingRing {
+    position: absolute;
+    inset: 0;
+    border: 3px solid transparent;
+    border-top-color: #7c3aed;
+    border-right-color: #a78bfa;
+    border-radius: 50%;
+}
+
+.processingIcon {
+    color: #a78bfa;
+}
+
+.processingBars {
+    display: flex;
+    gap: 4px;
+    margin-top: 0.5rem;
+}
+
+.processingBar {
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(180deg, #7c3aed, #a78bfa);
+    border-radius: 2px;
+}
+
+/* Output State */
+.outputCard {
+    width: 140px;
+    height: 100px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(34, 197, 94, 0.1) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.outputIcon {
+    color: #22c55e;
+}
+
+.outputBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: #22c55e;
+    color: #000000;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+/* Labels Row */
+.labelsRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-top: auto;
+    z-index: 1;
+}
+
+.labelsRow span {
+    font-size: 0.75rem;
+    color: #52525b;
+    transition: color 0.3s;
+}
+
+.activeLabel {
+    color: #a78bfa !important;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .demoCard {
+        aspect-ratio: 4 / 3;
+    }
+
+    .stepLine {
+        width: 30px;
+    }
+}

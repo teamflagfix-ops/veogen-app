@@ -1,0 +1,23 @@
+{
+  "id": "66e272b1-5f1d-4890-868f-c6aa52899ac7",
+  "videoUrl": "/output/66e272b1-5f1d-4890-868f-c6aa52899ac7/final.mp4",
+  "caption": "🎉 Sweet deal alert! Don't miss out! 🍦",
+  "hashtags": [
+    "#tiktokshop",
+    "#sale",
+    "#deal",
+    "#musthave",
+    "#limitedtime"
+  ],
+  "productTitle": "Ninja Creami",
+  "createdAt": "2026-01-05T19:47:32.597Z",
+  "scriptDuration": 10,
+  "voice": "nova",
+  "category": "kitchen",
+  "overlays": {
+    "discount": "DISCOUNT",
+    "urgency": "SHIPS TOMORROW! | SHIPS TOMORROW!",
+    "productName": "Ninja Creami",
+    "price": ""
+  }
+}

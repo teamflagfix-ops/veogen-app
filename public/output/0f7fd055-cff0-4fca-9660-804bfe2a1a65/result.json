@@ -1,0 +1,23 @@
+{
+  "id": "0f7fd055-cff0-4fca-9660-804bfe2a1a65",
+  "videoUrl": "/output/0f7fd055-cff0-4fca-9660-804bfe2a1a65/final.mp4",
+  "caption": "🍦Your dessert dreams await! Act fast!✨",
+  "hashtags": [
+    "#NinjaCreami",
+    "#IceCream",
+    "#Sale",
+    "#KitchenGadgets",
+    "#LimitedTime"
+  ],
+  "productTitle": "ninja creami",
+  "createdAt": "2025-12-27T20:16:48.025Z",
+  "scriptDuration": 14,
+  "voice": "nova",
+  "category": "kitchen",
+  "overlays": {
+    "discount": "50% off",
+    "urgency": "Limited time offer!",
+    "productName": "ninja creami",
+    "price": "199.99"
+  }
+}

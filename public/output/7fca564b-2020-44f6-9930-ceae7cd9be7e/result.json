@@ -1,0 +1,23 @@
+{
+  "id": "7fca564b-2020-44f6-9930-ceae7cd9be7e",
+  "videoUrl": "/output/7fca564b-2020-44f6-9930-ceae7cd9be7e/final.mp4",
+  "caption": "🍦 Sweet savings alert! 10% OFF the Ninja Creami! 🥳",
+  "hashtags": [
+    "#tiktokshop",
+    "#sale",
+    "#deal",
+    "#musthave",
+    "#limitedtime"
+  ],
+  "productTitle": "Ninja Creami",
+  "createdAt": "2026-01-06T02:03:30.801Z",
+  "scriptDuration": 10,
+  "voice": "nova",
+  "category": "kitchen",
+  "overlays": {
+    "discount": "10% OFF",
+    "urgency": "LIMITED STOCK!",
+    "productName": "Ninja Creami",
+    "price": ""
+  }
+}

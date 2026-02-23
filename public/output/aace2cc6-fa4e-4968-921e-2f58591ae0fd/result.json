@@ -1,0 +1,23 @@
+{
+  "id": "aace2cc6-fa4e-4968-921e-2f58591ae0fd",
+  "videoUrl": "/output/aace2cc6-fa4e-4968-921e-2f58591ae0fd/final.mp4",
+  "caption": "🍦 Don't miss out on this deal! Limited stock! 🏃‍♀️💨",
+  "hashtags": [
+    "#tiktokshop",
+    "#sale",
+    "#deal",
+    "#musthave",
+    "#limitedtime"
+  ],
+  "productTitle": "Ninja Creami",
+  "createdAt": "2026-02-04T18:57:38.832Z",
+  "scriptDuration": 10,
+  "voice": "nova",
+  "category": "living_room",
+  "overlays": {
+    "discount": null,
+    "urgency": "LIMITED STOCK!",
+    "productName": "Ninja Creami",
+    "price": "199"
+  }
+}
