@@ -1031,11 +1031,14 @@ export default function PipelinePage() {
                                         <button className={styles.nodeDelete} onClick={() => deleteNode(node.id)}>✕</button>
                                     </div>
 
-                                    {/* Powered By */}
-                                    <div className={styles.poweredBy}>⚡ {def.poweredBy}</div>
+                                    {/* Description + Powered By */}
+                                    <div className={styles.nodeDescription}>
+                                        <div className={styles.nodeDescText}>{def.description}</div>
+                                        <div className={styles.poweredBy}>⚡ {def.poweredBy} · {def.cost}</div>
+                                    </div>
 
-                                    {/* OUTPUT PREVIEW AREA */}
-                                    {(node.previewUrl || node.outputUrl) && (
+                                    {/* OUTPUT PREVIEW AREA — only show for blocks WITHOUT an upload field (to avoid duplicate) */}
+                                    {!def.fields.some(f => f.type === "image") && (node.previewUrl || node.outputUrl) && (
                                         <div className={styles.nodePreview}>
                                             {(node.outputType === "video" || node.previewType === "video" || (node.outputUrl || node.previewUrl || "").includes(".mp4")) ? (
                                                 <video
@@ -1053,8 +1056,8 @@ export default function PipelinePage() {
                                         </div>
                                     )}
 
-                                    {/* Output placeholder (when no output yet but block produces visual output) */}
-                                    {!node.previewUrl && !node.outputUrl && (def.outputs.some(o => o.label.includes("Video") || o.label.includes("Image") || o.label.includes("Media"))) && (
+                                    {/* Output placeholder — only for blocks WITHOUT upload fields */}
+                                    {!def.fields.some(f => f.type === "image") && !node.previewUrl && !node.outputUrl && (def.outputs.some(o => o.label.includes("Video") || o.label.includes("Image") || o.label.includes("Media"))) && (
                                         <div className={styles.outputPlaceholder}>
                                             <span className={styles.outputPlaceholderIcon}>
                                                 {def.outputs.some(o => o.label.includes("Video")) ? "🎬" : def.outputs.some(o => o.label.includes("Media")) ? "📁" : "🖼️"}

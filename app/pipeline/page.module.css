@@ -488,6 +488,20 @@
     padding-left: 2px;
 }
 
+/* ===== NODE DESCRIPTION ===== */
+.nodeDescription {
+    padding: 6px 12px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.nodeDescText {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+    margin-bottom: 3px;
+}
+
 /* ===== OUTPUT PREVIEW ===== */
 .nodePreview {
     padding: 6px;

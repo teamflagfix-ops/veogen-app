@@ -62,6 +62,9 @@ export default function Landing() {
                         <a href="#pricing" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
                             Pricing
                         </a>
+                        <Link href="/pipeline" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors flex items-center gap-1">
+                            🛠️ Pipeline Builder
+                        </Link>
                         <Link href="/create">
                             <button className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white rounded-xl font-bold px-6 py-2.5 flex items-center gap-2 transition-all shadow-lg shadow-violet-500/25">
                                 Start Free <ArrowRight className="w-4 h-4" />
@@ -461,6 +464,59 @@ export default function Landing() {
                                     </div>
                                 </motion.div>
                             ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Pipeline Builder Section */}
+                <section className="py-24 md:py-32 border-t border-white/5 bg-gradient-to-b from-violet-500/[0.03] to-transparent">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-16"
+                        >
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-sm font-medium mb-6">
+                                🛠️ Advanced
+                            </div>
+                            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+                                Pipeline <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">Builder</span>
+                            </h2>
+                            <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
+                                Build custom AI workflows by connecting blocks together. Scrape products, generate scripts, create videos, remove watermarks — all in one visual flow.
+                            </p>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                            {[
+                                { icon: "🔍", title: "Spy Blocks", desc: "Scrape TikTok Shop, track competitors, find trending sounds" },
+                                { icon: "🧠", title: "Brain Blocks", desc: "AI scripts, hooks, captions, A/B testing, scheduling" },
+                                { icon: "🎬", title: "Factory Blocks", desc: "Generate videos, images, remove backgrounds, add text" },
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] text-center"
+                                >
+                                    <div className="text-4xl mb-3">{item.icon}</div>
+                                    <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                                    <p className="text-zinc-400 text-sm">{item.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        <div className="text-center">
+                            <Link href="/pipeline">
+                                <button className="bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white rounded-2xl px-10 h-14 text-lg font-bold shadow-[0_0_30px_rgba(34,211,238,0.3)] hover:scale-105 transition-all flex items-center gap-3 mx-auto">
+                                    Open Pipeline Builder <ArrowRight className="w-5 h-5" />
+                                </button>
+                            </Link>
+                            <p className="text-sm text-zinc-500 mt-4">20 blocks · Drag & drop · Visual AI workflows</p>
                         </div>
                     </div>
                 </section>
