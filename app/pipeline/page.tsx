@@ -322,9 +322,11 @@ interface PipelineNode {
     x: number;
     y: number;
     config: Record<string, string>;
-    previewUrl?: string;
-    outputUrl?: string;
     status?: "idle" | "running" | "done" | "error";
+    previewUrl?: string;
+    previewType?: "image" | "video";
+    outputUrl?: string;
+    outputType?: "image" | "video";
 }
 
 interface Connection {
@@ -508,33 +510,39 @@ export default function PipelinePage() {
         );
     };
 
-    // ===== IMAGE UPLOAD =====
-    const handleImageUpload = (nodeId: string, fieldKey: string, file: File) => {
-        // Use Object URL for instant display (no base64 bloat)
+    // ===== MEDIA UPLOAD (images + videos) =====
+    const handleMediaUpload = (nodeId: string, fieldKey: string, file: File) => {
         const objectUrl = URL.createObjectURL(file);
+        const isVideo = file.type.startsWith("video/");
+        const mediaType = isVideo ? "video" : "image";
 
-        // Create a small thumbnail for localStorage (200px max)
-        const img = new Image();
-        img.onload = () => {
-            const canvas = document.createElement("canvas");
-            const maxSize = 200;
-            const scale = Math.min(maxSize / img.width, maxSize / img.height, 1);
-            canvas.width = img.width * scale;
-            canvas.height = img.height * scale;
-            const ctx = canvas.getContext("2d");
-            if (ctx) {
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                const thumbnail = canvas.toDataURL("image/jpeg", 0.6);
-                // Store tiny thumbnail in config (for localStorage)
-                updateNodeConfig(nodeId, fieldKey + "_thumb", thumbnail);
-            }
-        };
-        img.src = objectUrl;
-
-        // Store object URL for display, mark that we have image data
+        // Store the media type so we know how to render it
         updateNodeConfig(nodeId, fieldKey, objectUrl);
+        updateNodeConfig(nodeId, fieldKey + "_type", mediaType);
+        updateNodeConfig(nodeId, fieldKey + "_name", file.name);
+
+        // Create thumbnail only for images (videos are too complex)
+        if (!isVideo) {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement("canvas");
+                const maxSize = 200;
+                const scale = Math.min(maxSize / img.width, maxSize / img.height, 1);
+                canvas.width = img.width * scale;
+                canvas.height = img.height * scale;
+                const ctx = canvas.getContext("2d");
+                if (ctx) {
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    const thumbnail = canvas.toDataURL("image/jpeg", 0.6);
+                    updateNodeConfig(nodeId, fieldKey + "_thumb", thumbnail);
+                }
+            };
+            img.src = objectUrl;
+        }
+
+        // Set preview on node
         setNodes((prev) =>
-            prev.map((n) => (n.id === nodeId ? { ...n, previewUrl: objectUrl } : n))
+            prev.map((n) => (n.id === nodeId ? { ...n, previewUrl: objectUrl, previewType: mediaType } : n))
         );
     };
 
@@ -588,7 +596,7 @@ export default function PipelinePage() {
                     if (downloadUrl) {
                         // Show the output in node
                         const isVideo = downloadUrl.includes(".mp4") || downloadUrl.includes("video");
-                        setNodes((prev) => prev.map((n) => (n.id === node.id ? { ...n, outputUrl: downloadUrl!, status: "done" as const } : n)));
+                        setNodes((prev) => prev.map((n) => (n.id === node.id ? { ...n, outputUrl: downloadUrl!, outputType: (isVideo ? "video" : "image") as "video" | "image", status: "done" as const } : n)));
 
                         // Trigger real browser download
                         try {
@@ -638,9 +646,9 @@ export default function PipelinePage() {
 
                     // Update node with visual preview
                     if (output.type === "video" && output.video_url) {
-                        setNodes((prev) => prev.map((n) => (n.id === node.id ? { ...n, outputUrl: output.video_url, status: "done" as const } : n)));
+                        setNodes((prev) => prev.map((n) => (n.id === node.id ? { ...n, outputUrl: output.video_url, outputType: "video" as const, status: "done" as const } : n)));
                     } else if (output.type === "image" && output.image_url) {
-                        setNodes((prev) => prev.map((n) => (n.id === node.id ? { ...n, outputUrl: output.image_url, status: "done" as const } : n)));
+                        setNodes((prev) => prev.map((n) => (n.id === node.id ? { ...n, outputUrl: output.image_url, outputType: "image" as const, status: "done" as const } : n)));
                     } else {
                         setNodes((prev) => prev.map((n) => (n.id === node.id ? { ...n, status: "done" as const } : n)));
                     }
@@ -750,20 +758,26 @@ export default function PipelinePage() {
     // ===== RENDER FIELD =====
     const renderField = (field: BlockField, node: PipelineNode) => {
         if (field.type === "image") {
+            const fileUrl = node.config[field.key];
+            const fileType = node.config[field.key + "_type"] || "image";
+            const fileName = node.config[field.key + "_name"] || "";
             return (
                 <div className={styles.nodeField} key={field.key}>
                     <div className={styles.nodeFieldLabel}>{field.label}</div>
                     <label className={styles.imageUploadArea}>
-                        {node.config[field.key] ? (
-                            <img src={node.config[field.key]} alt="Uploaded" className={styles.imageUploadPreview} />
+                        {fileUrl && fileType === "video" ? (
+                            <video src={fileUrl} className={styles.imageUploadPreview} controls muted playsInline />
+                        ) : fileUrl ? (
+                            <img src={fileUrl} alt="Uploaded" className={styles.imageUploadPreview} />
                         ) : (
                             <div className={styles.imageUploadPlaceholder}>
-                                <span>📷</span><span>Click to upload</span>
+                                <span>📷</span><span>Click to upload image or video</span>
                             </div>
                         )}
                         <input type="file" accept="image/*,video/*" style={{ display: "none" }}
-                            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImageUpload(node.id, field.key, f); }} />
+                            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleMediaUpload(node.id, field.key, f); }} />
                     </label>
+                    {fileName && <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.35)', paddingTop: 3 }}>📎 {fileName}</div>}
                 </div>
             );
         }
@@ -1007,8 +1021,16 @@ export default function PipelinePage() {
                                     {/* OUTPUT PREVIEW AREA */}
                                     {(node.previewUrl || node.outputUrl) && (
                                         <div className={styles.nodePreview}>
-                                            {(node.outputUrl || node.previewUrl || "").includes(".mp4") ? (
-                                                <video src={node.outputUrl || node.previewUrl} className={styles.nodePreviewImg} controls muted autoPlay loop />
+                                            {(node.outputType === "video" || node.previewType === "video" || (node.outputUrl || node.previewUrl || "").includes(".mp4")) ? (
+                                                <video
+                                                    src={node.outputUrl || node.previewUrl}
+                                                    className={styles.nodePreviewImg}
+                                                    controls
+                                                    muted
+                                                    autoPlay
+                                                    loop
+                                                    playsInline
+                                                />
                                             ) : (
                                                 <img src={node.outputUrl || node.previewUrl} alt="Preview" className={styles.nodePreviewImg} />
                                             )}
@@ -1016,13 +1038,13 @@ export default function PipelinePage() {
                                     )}
 
                                     {/* Output placeholder (when no output yet but block produces visual output) */}
-                                    {!node.previewUrl && !node.outputUrl && (def.outputs.some(o => o.label.includes("Video") || o.label.includes("Image"))) && (
+                                    {!node.previewUrl && !node.outputUrl && (def.outputs.some(o => o.label.includes("Video") || o.label.includes("Image") || o.label.includes("Media"))) && (
                                         <div className={styles.outputPlaceholder}>
                                             <span className={styles.outputPlaceholderIcon}>
-                                                {def.outputs.some(o => o.label.includes("Video")) ? "🎬" : "🖼️"}
+                                                {def.outputs.some(o => o.label.includes("Video")) ? "🎬" : def.outputs.some(o => o.label.includes("Media")) ? "📁" : "🖼️"}
                                             </span>
                                             <span className={styles.outputPlaceholderText}>
-                                                {def.outputs.some(o => o.label.includes("Video")) ? "Video will appear here" : "Image will appear here"}
+                                                {def.outputs.some(o => o.label.includes("Video")) ? "Video will appear here" : def.outputs.some(o => o.label.includes("Media")) ? "Upload media to preview" : "Image will appear here"}
                                             </span>
                                         </div>
                                     )}
