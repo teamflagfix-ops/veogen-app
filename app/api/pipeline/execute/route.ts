@@ -244,12 +244,16 @@ export async function POST(req: NextRequest) {
         // =====================================
 
         if (blockId === "media_upload") {
-            // Media upload just passes through the uploaded file
-            const imageData = config.input_image;
-            if (imageData && !imageData.startsWith("blob:")) {
+            const mediaUrl = config.input_image;
+            if (mediaUrl && !mediaUrl.startsWith("blob:")) {
+                const isVideo = mediaUrl.includes(".mp4") || mediaUrl.includes(".webm") || mediaUrl.includes(".mov");
                 return NextResponse.json({
                     success: true,
-                    output: { image_url: imageData, type: "image" }
+                    output: {
+                        image_url: isVideo ? undefined : mediaUrl,
+                        video_url: isVideo ? mediaUrl : undefined,
+                        type: isVideo ? "video" : "image"
+                    }
                 });
             }
             return NextResponse.json({

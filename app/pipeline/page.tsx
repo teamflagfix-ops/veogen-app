@@ -511,17 +511,21 @@ export default function PipelinePage() {
     };
 
     // ===== MEDIA UPLOAD (images + videos) =====
-    const handleMediaUpload = (nodeId: string, fieldKey: string, file: File) => {
+    const handleMediaUpload = async (nodeId: string, fieldKey: string, file: File) => {
         const objectUrl = URL.createObjectURL(file);
         const isVideo = file.type.startsWith("video/");
         const mediaType = isVideo ? "video" : "image";
 
-        // Store the media type so we know how to render it
+        // Show immediate local preview
         updateNodeConfig(nodeId, fieldKey, objectUrl);
         updateNodeConfig(nodeId, fieldKey + "_type", mediaType);
         updateNodeConfig(nodeId, fieldKey + "_name", file.name);
 
-        // Create thumbnail only for images (videos are too complex)
+        setNodes((prev) =>
+            prev.map((n) => (n.id === nodeId ? { ...n, previewUrl: objectUrl, previewType: mediaType } : n))
+        );
+
+        // Create thumbnail only for images
         if (!isVideo) {
             const img = new Image();
             img.onload = () => {
@@ -540,10 +544,22 @@ export default function PipelinePage() {
             img.src = objectUrl;
         }
 
-        // Set preview on node
-        setNodes((prev) =>
-            prev.map((n) => (n.id === nodeId ? { ...n, previewUrl: objectUrl, previewType: mediaType } : n))
-        );
+        // Upload to server for real pipeline flow
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+            const res = await fetch("/api/upload", { method: "POST", body: formData });
+            const data = await res.json();
+            if (data.success) {
+                // Update with real server URL
+                updateNodeConfig(nodeId, fieldKey, data.url);
+                setNodes((prev) =>
+                    prev.map((n) => (n.id === nodeId ? { ...n, previewUrl: data.url, previewType: mediaType } : n))
+                );
+            }
+        } catch (e) {
+            console.error("Upload failed", e);
+        }
     };
 
     // ===== RUN PIPELINE =====

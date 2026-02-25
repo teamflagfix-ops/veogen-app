@@ -495,11 +495,15 @@
 }
 
 .nodePreviewImg {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
     border-radius: 6px;
     display: block;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .outputPlaceholder {
@@ -591,10 +595,14 @@
 }
 
 .imageUploadPreview {
-    width: 100%;
-    max-height: 140px;
-    object-fit: cover;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
     border-radius: 6px;
+    display: block;
+    margin: 0 auto;
 }
 
 /* ===== SVG CONNECTIONS ===== */
